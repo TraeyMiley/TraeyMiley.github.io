@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gbk">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="all">
+    <meta name="author" content="Tencent-CP">
+    <meta name="Copyright" content="Tencent">
+    <meta name="Keywords" content="英雄联盟,魔法引擎,电玩皮肤">
+    <meta name="Description" content="海克斯的魔法引擎将不会重复获得已获得的道具（除非所有普通道具被获得并轮换）。">
+    <title>海克斯科技魔法引擎-英雄联盟官网-腾讯游戏</title>
+    <!-- 页面设计：cp | 页面制作：cp | 创建：2017-08-03 -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+	<div class="wrap_o">
+    	<div class="top">
+			<h1 class="none">珍稀图标销售 赠送魔法引擎</h1>
+         <a href="//lol.qq.com" target="_blank" class="lol_logo"><img src="//game.gtimg.cn/images/lol/act/a20170811arcade/logo.png"></a>
+			<ul class="nav-ul clearfix">
+				<li class="fl"><a href="#part6" onClick="pgvSendClick({hottag:'a20170913hax.index.topbtn.btn1'});" class="nav-btn1">活动<em>规则</em></a></li>
+				<li class="fl"><a href="javascript:;" onClick="DoUserHist(2);pgvSendClick({hottag:'a20170913hax.index.topbtn.btn2'});" class="nav-btn2">我获得的<em>道具列表</em></a></li>
+				<li class="fl"><a href="javascript:;" onClick="DoUserHist(1);pgvSendClick({hottag:'a20170913hax.index.topbtn.btn3'});" class="nav-btn3">购买<em>记录</em></a></li>
+			</ul>
+			<div class="login-box">
+				<p id="unlogin" style="display: none;">欢迎您，请先 <a href="javascript:;" onClick="LoginManager.login();" title="登录" class="a-in">[登录]</a></p>
+				<p id="logined" style="display: block;">欢迎您，亲爱的 
+				    <span id="login_qq_span"></span>&nbsp;
+				    <span id="spanNotBind_397162"><a class="a-out" href="javascript:amsInit(122490, 397161);">请先绑定大区</a></span>
+					<span id="spanBind_397162" style="display:none">
+                    	<span id="area_info_397162"></span>
+                    	<span  style="display:none;" id="role_info_397162"></span>
+                    	<a href="javascript:changeArea();">更改绑定</a>
+                	</span>
+					<i class="">&nbsp;|&nbsp;</i><a href="javascript:;" onClick="LoginManager.logout(function(){location.reload()});" title="注销" class="a-out">注销</a>
+				</p>
+			</div>
+			<!--第一部分 s-->
+			<h2 class="tit1" id="part1">充值钻石</h2>
+			<div class="step1 step_bg dbox_wp clearfix">
+           <p class="powertxt">此钻石仅限参与海克斯魔法引擎活动</p>
+				<div class="dbox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/img1.png" width="220" height="195" />
+					<p class="dbox_txt"><span class="dbox_no">1200</span>颗<span class="addico">赠送</span><span class="dbox_wno">120</span>颗</p>
+					<a href="javascript:;" onClick="amsSubmit(122490,397158);pgvSendClick({hottag:'a20170913hax.index.paybtn.btn1200'});" class="btn-pay">立即充值</a>
+				</div>
+				<div class="dbox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/img2.png" width="220" height="195" />
+					<p class="dbox_txt"><span class="dbox_no">2000</span>颗<span class="addico">赠送</span><span class="dbox_wno">200</span>颗</p>
+					<a href="javascript:;" onClick="amsSubmit(122490,397159);pgvSendClick({hottag:'a20170913hax.index.paybtn.btn2000'});" class="btn-pay">立即充值</a>
+				</div>
+				<div class="dbox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/img3.png" width="220" height="195" />
+					<p class="dbox_txt"><span class="dbox_no">5000</span>颗<span class="addico">赠送</span><span class="dbox_wno">600</span>颗</p>
+					<a href="javascript:;" onClick="amsSubmit(122490,397160);pgvSendClick({hottag:'a20170913hax.index.paybtn.btn5000'});" class="btn-pay">立即充值</a>
+				</div>
+				<div class="dbox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/img4.png" width="220" height="195" class="payimg" />
+              <p class="paytips">无赠送。建议购买左侧钻石礼包</p>
+					<p class="payinfo">充<input id="DiamondNum" type="text" value="10" class="payinp" />颗</p>
+					<a id="buy_btn" href="javascript:;" onClick="BuyDiamond(0);pgvSendClick({hottag:'a20170913hax.index.paybtn.btnfree'});" class="btn-pay">立即充值</a>
+				</div>
+			</div>
+			<!--第一部分 e-->
+			<!--第二部分 s-->
+			<h2 class="tit2" id="part2">购买珍稀图标赠送海克斯的魔法引擎</h2>
+			<div class="step2 step_bg buybox_wp clearfix">
+			<p class="powertxt st2pos">当前拥有<strong>钻石</strong><span id="iDiamond"></span>颗 <span id="BtnRef"><a href="javascript:;" onClick="BtnRefInfo();pgvSendClick({hottag:'act.a20170913hax.functionBtn.refresh'});">点击刷新</a></span>（如果购买钻石未到账，请刷新页面）</p>
+				<div class="buybox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/pay1.png" width="323" height="322" />
+					<p class="buyboxtxt">购买电玩硬币图标（3天），赠海克斯蓝色魔法引擎</p>
+					<p class="buyboxprize">价格：<span id="costDiaNum1">120</span>钻石</p>
+					<div class="exchangebox"><b>兑换数量</b><input id="wardSkin1" type="text" value="1" class="exchangeinp"><a href="javascript:;" onClick="BuyWardSkin(1,0)" class="btn-exchange">点击兑换</a></div>
+					<a href="#part4" class="btn-look">查看引擎内容</a>
+				</div>
+				<div class="buybox fl">
+					<img src="//game.gtimg.cn/images/lol/act/a20170913hax/pay2.png" width="323" height="322" />
+					<p class="buyboxtxt">购买电玩硬币图标（7天），赠海克斯紫色魔法引擎</p>
+					<p class="buyboxprize">价格：<span id="costDiaNum2">200</span>钻石</p>
+					<div class="exchangebox"><b>兑换数量</b><input id="wardSkin2" type="text" value="1" class="exchangeinp"><a href="javascript:;"  onclick="BuyWardSkin(2,0)" class="btn-exchange">点击兑换</a></div>
+					<a href="#part8" class="btn-look">查看引擎内容</a>
+				</div>
+			</div>
+			<!--第二部分 e-->
+			<!--第三部分 s-->
+			<h2 class="tit3" id="part3">幸运引擎充能</h2>
+			<div class="step3 step_bg clearfix">
+				<p class="powertxt">每开启一个蓝色/紫色魔法引擎将为幸运引擎充能，消耗幸运引擎能量将可以直接兑换珍稀炫彩皮肤和限定皮肤</p>
+				<div class="power-line-bg">
+					<div class="power-w"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/emp.png" width="206" height="517"></div>
+              <div class="power-line"></div>
+				</div>
+				<div class="powerinfo clearfix">
+					<p class="fl">当前幸运能量：<span id="iLuckyNum"></span></p>
+					<a href="javascript:;" onClick="ShowSyn()" class="btn-powerpay fl">为幸运引擎充能</a>
+				</div>
+				<div class="powerbox fl">
+					<ul class="powerul clearfix">
+						<li class="fl ts2">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_1_1">80</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize6.jpg" width="140" height="184" /><p><span class="yels">消耗</span>80能量兑换</p></div>
+							<p class="skname">钻石星辰图标</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(6,80);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize9'});" class="btn-dh"></a>
+						</li>
+						<li class="fl ts3">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_1_2">500</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize5.jpg" width="140" height="184" /><p><span class="yels">消耗</span>500能量兑换</p></div>
+							<p class="skname">美猴王 孙悟空</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(5,500);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize8'});" class="btn-dh"></a>
+						</li>
+						<li class="fl">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_1">100</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize1.jpg" width="140" height="184" /><p><span class="yels">消耗</span>100能量兑换</p></div>
+							<p class="skname">少女阿狸图标</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(1,100);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize9'});" class="btn-dh"></a>
+						</li>
+						<li class="fl">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_2">200</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize2.jpg" width="140" height="184" /><p><span class="yels">消耗</span>200能量兑换</p></div>
+							<p class="skname">勇敢的心 德莱厄斯</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(2,200);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize8'});" class="btn-dh"></a>
+						</li>
+						<li class="fl">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_3">300</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize3.jpg" width="140" height="184" /><p><span class="yels">消耗</span>300能量兑换</p></div>
+							<p class="skname">惊悚派对 费德提克</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(3,300);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize7'});" class="btn-dh"></a>
+						</li>
+						<li class="fl">
+							<div class="tik"></div>
+							<div class="powerno" id="powerno_4">400</div>
+							<div class="powershow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/prize4.jpg" width="140" height="184" /><p><span class="yels">消耗</span>400能量兑换</p></div>
+							<p class="skname">安妮梦游仙境</p>
+							<span class="dh_time_limit gift-geted"></span>
+							<a href="javascript:;" onClick="DoDrawSP(4,400);pgvSendClick({hottag:'a20170913hax.index.dhbtn.prize7'});" class="btn-dh"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!--第三部分 e-->
+			<!--第四部分 s-->
+			<h2 class="tit4" id="part4">打开魔法引擎获得惊喜</h2>
+			<div class="step4 step_bg clearfix">
+				<div class="prize1">
+					<div class="prize-top clearfix">
+						<div class="prize-imgbox fl">
+							<img src="//game.gtimg.cn/images/lol/act/a20170913hax/item1.png" width="150">
+							<p>海克斯<strong>蓝色</strong>魔法引擎</p>
+							<p class="wtxt">已拥有：<span id="draw_zige_num_1"></span>个</p>
+						</div>
+						<div class="prize-btnbox fl">
+							
+							<a href="#part2" class="btn-buymore1">点击购买更多</a>
+						</div>
+					</div>
+					<div class="openbox1" id="openbox1">
+						<p class="txt1">打开魔法引擎后，将获得以下<em>11个道具中的1个</em>，并获得10点幸运能量。</p>
+						<p class="txt1">本页中已经获得的普通皮肤将不会再重复获得（直到全部8个普通皮肤被获得并轮换）</p>
+						<p class="txt2">普通皮肤<span>限定皮肤</span></p>
+						<a href="javascript:;" class="btn-open1" rel="1" id="btn-open1">打开1个蓝色魔法引擎</a>
+						<p class="openqus">?</p>
+						<div class="qustxt">
+							 <p>蓝色魔法引擎有以下卓越的特性：</p>
+							 <p class="plist"><span>1</span>本页中已经获得的普通皮肤将不会再重复获得（直到全部8个普通皮肤被获得并轮换）</p> 
+							 <p class="plist"><span>2</span>当本页8个普通皮肤全部被获得后，将重新轮换8个普通皮肤</p> 
+						</div>
+						<label><input type="checkbox" id="cbox1" />跳过动画</label>
+						<!--蓝色12个皮肤奖池 s-->
+						<div class="opendiv">
+							<ul class="openul clearfix" id="draw_awards_list_1">
+							<!--  
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/104003.jpg" width="134" height="240"><p>黑帮教父 格雷福斯</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/21007.jpg" width="134" height="240"><p>电玩女神 厄运小姐</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/92006.jpg" width="134" height="240"><p>电玩勇者 锐雯</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/103007.jpg" width="134" height="240"><p>电玩女神 阿狸</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/120004.jpg" width="134" height="240"><p>电玩战魂 赫卡里姆</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr2"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/103007.jpg" width="134" height="240"><p>电玩女神 阿狸</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/120004.jpg" width="134" height="240"><p>电玩战魂 赫卡里姆</p></div></li>
+							-->
+							</ul>
+						</div>
+						<!--蓝色12个皮肤奖池 e-->
+					</div>
+				</div>
+				<div class="prize2">
+					<div class="prize-top clearfix">
+						<div class="prize-imgbox fl">
+							<img src="//game.gtimg.cn/images/lol/act/a20170913hax/item2.png" id="part8" width="150">
+							<p>海克斯<strong>紫色</strong>魔法引擎</p>
+							<p class="wtxt">已拥有：<span id="draw_zige_num_2"></span>个</p>
+						</div>
+						<div class="prize-btnbox fl">
+							
+							<a href="#part2" class="btn-buymore2">点击购买更多</a>
+						</div>
+					</div>
+					<div class="openbox2" id="openbox2">
+						<p class="txt1">打开魔法引擎后，将获得以下<em>11个道具中的1个</em>，并获得20点幸运能量。</p>
+						<p class="txt1">本页中已经获得的普通皮肤将不会再重复获得（直到全部8个普通皮肤被获得并轮换）</p>
+						<p class="txt2">普通皮肤<span>限定皮肤</span></p>
+						<a href="javascript:;" class="btn-open2" rel="2" id="btn-open2">打开1个紫色魔法引擎</a>
+						<p class="openqus">?</p>
+						<div class="qustxt">
+							 <p>紫色魔法引擎有以下卓越的特性：</p>
+							 <p class="plist"><span>1</span>本页中已经获得的普通皮肤将不会再重复获得（直到全部8个普通皮肤被获得并轮换）</p> 
+							 <p class="plist"><span>2</span>当本页8个普通皮肤全部被获得后，将重新轮换8个普通皮肤</p> 
+							 <p class="plist"><span>3</span><em class="yels">紫色魔法引擎中不会包含7天体验皮肤</em></p> 
+						</div>
+						<label><input type="checkbox" id="cbox2" />跳过动画</label>
+						<!--紫色12个皮肤奖池 s-->
+						<div class="opendiv">
+							<ul class="openul clearfix" id="draw_awards_list_2">
+							<!--  
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/104003.jpg" width="134" height="240"><p>黑帮教父 格雷福斯</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/21007.jpg" width="134" height="240"><p>电玩女神 厄运小姐</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/92006.jpg" width="134" height="240"><p>电玩勇者 锐雯</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/103007.jpg" width="134" height="240"><p>电玩女神 阿狸</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/120004.jpg" width="134" height="240"><p>电玩战魂 赫卡里姆</p></div></li>
+								<li class="fl"><div class="openshow"><img src="//game.gtimg.cn/images/lol/act/a20170913hax/unknow2.jpg" width="134" height="240"><p>？？？</p></div></li>
+								<li class="fl mr2"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/103007.jpg" width="134" height="240"><p>电玩女神 阿狸</p></div></li>
+								<li class="fl"><div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/120004.jpg" width="134" height="240"><p>电玩战魂 赫卡里姆</p></div></li>
+							-->
+							</ul>
+						</div>
+						<!--紫色12个皮肤奖池 e-->
+					</div>
+				</div>
+			</div>
+			<!--第四部分 e-->
+			<!--第五部分 s-->
+			<h2 class="tit5" id="part5">领取奖励</h2>
+			<div class="step5 step_bg clearfix">
+				<p class="txt2" style="display:none">每开启一个魔法引擎将会为引擎充能，消耗幸运引擎的充能数将可以直接兑换珍稀炫彩皮肤和限定皮肤</p>
+				<div class="tc"><a  target="_blank" href="javascript:;" onClick="Personal();" class="btn-check">查询我的英雄和皮肤</a><a href="javascript:;" onClick="ShowSyn()" class="btn-syn">我要分解充能</a></div>
+				<!-- 蓝色奖励列表 s-->
+				<p class="listtit">海克斯<strong>蓝色魔法引擎奖励</strong></p>
+				<div class="scroll-stuff">
+				<p class="gift-pages" id="draw1_page" style="color:#FFFFFF"></p>
+					<div class="scroll-stuffbox" id="draw1_list">
+						<div class="scroll-pic-box">
+							<ul class="scroll-pic">
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none.png"><a href="javascript:;" onClick="ShowUserItemTab(0,'Draw1List')"><em class="pa giftcolor">点击查看<br>奖励</em></a></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 蓝色奖励列表 e-->
+				<!-- 紫色奖励列表 s-->
+				<p class="listtit">海克斯<strong>紫色魔法引擎奖励</strong></p>
+				<div class="scroll-stuff">
+					<p class="gift-pages" id="draw2_page" style="color:#FFFFFF"></p>
+					<div class="scroll-stuffbox" id="draw2_list">
+						<div class="scroll-pic-box">
+							<ul class="scroll-pic">
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none.png"><a href="javascript:;" onClick="ShowUserItemTab(0,'Draw2List')"><em class="pa giftcolor">点击查看<br>奖励</em></a></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 紫色奖励列表 e-->
+				<!-- 幸运奖励列表 s-->
+				<p class="listtit">海克斯<strong>幸运魔法引擎奖励</strong></p>
+				<div class="scroll-stuff">
+					<p class="gift-pages" id="lucky_page" style="color:#FFFFFF"></p>
+					<div class="scroll-stuffbox" id="lucky_list">
+						<div class="scroll-pic-box">
+							<ul class="scroll-pic">
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none.png"><a href="javascript:;" onClick="ShowUserItemTab(0,'DrawLuckyList')"><em class="pa giftcolor">点击查看<br>奖励</em></a></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+								<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 幸运奖励列表 e-->
+			</div>
+			<!--第五部分 e-->
+			<h2 class="tit6" id="part6">活动规则</h2>
+			<div class="step6 step_bg clearfix">
+				<ul class="rulelist">
+				<li class="clearfix"><em class="ico">1</em><p>在活动页面上使用Q币充值钻石，1Q币充值10钻石。提供钻石礼包，分别是1200颗赠送120颗，2000颗赠送200颗，5000颗赠送600颗。购买其他数额钻石暂无赠送</p></li>
+				<li class="clearfix"><em class="ico">2</em><p>使用钻石兑换珍稀图标，其中120钻石兑换一份“电玩硬币图标（3天）”，赠“海克斯蓝色魔法引擎”一份；200钻石兑换一份“电玩硬币图标（7天）”，赠“海克斯紫色魔法引擎”一份。兑换多份珍稀守卫皮肤，使用时间叠加。</p></li>
+				<li class="clearfix"><em class="ico">3</em><p>电玩硬币图标将直接发放到绑定的帐号及大区中，从兑换时开始计算时限。</p></li>
+				<li class="clearfix"><em class="ico">4</em><p>打开魔法引擎会赠送道具，道具需要手动领取，支持领取到任意大区。<a href="http://lol.qq.com/act/a20170913hax/awrads.html" target="_blank" class="yel">点击查看所有皮肤奖励</a><a href="http://lol.qq.com/webplat/info/news_version3/152/4579/4581/m3106/201704/578901.shtml" target="_blank">点击查看概率</a></p></li>
+				<li class="clearfix"><em class="ico">5</em><p>打开蓝色魔法引擎将累计10幸运引擎能量，打开紫色魔法引擎将累计20幸运引擎能量。分解1个蓝色魔法引擎赠送的道具累积2点能量，分解1个紫色魔法引擎赠送的道具累积5点能量。消耗幸运引擎能量可以免费获赠皮肤奖励</p></li>
+				<li class="clearfix"><em class="ico">6</em><p>领取道具之前请确认该大区是否拥有该道具，重复领取的期限道具将会叠加使用时间，重复领取的永久道具将会覆盖原道具。领取英雄、皮肤、珍稀守卫皮肤2个小时内发放到游戏中，请重新登录游戏查看。</p></li>
+				<li class="clearfix"><em class="ico">7</em><p>皮肤如果未拥有英雄，仍然可以领取到指定大区，购买了相应英雄之后即可使用。</p></li>
+				<li class="clearfix"><em class="ico">8</em><p>在玩家被封号期间，期限道具的时长计算不会停止，请各位召唤师注意言行。</p></li>
+				<li class="clearfix"><em class="ico">9</em><p>在法律允许的范围内，腾讯公司拥有对本活动的解释权。</p></li>
+				<li class="clearfix"><em class="ico">10</em><p>因本活动及其规则产生的任何争议，用户与举办方友好协商解决，如若协商不成，用户和举办方均同意将争议提交至举办方即腾讯公司所在地人民法院诉讼解决。因本活动及其规则的一切事宜均适用中华人民共和国法律。</p></li>
+				</ul>
+			</div>
+			<!--第六部分 s-->
+			<!--第六部分 e-->
+			<!--第七部分 s-->
+			<h2 class="tit7" id="part7">活动FAQ</h2>
+			<div class="step7 step_bg clearfix">
+				<ul class="faqlist">
+                <li>
+                    <em class="ico cq">Q:</em>
+                    <p>皮肤和英雄的使用时限如何计算？</p>
+                </li>
+                <li class="pb15">
+                    <em class="ico">A:</em>
+                    <p>通过活动获得的英雄/皮肤分期限和非期限两种类型。例如：“皮肤 暴龙 科加斯 7天体验”代表该皮肤自领取时起，有7天的使用有效期，超过期限则无法继续使用；“皮肤 暴龙 科加斯”代表该皮肤没有时间限制，领取后可以一直使用下去。</p>
+                </li>
+				
+                <li>
+                    <em class="ico cq">Q:</em>
+                    <p>珍稀图标的时限如何计算？</p>
+                </li>
+                <li class="pb15">
+                    <em class="ico">A:</em>
+                    <p>购买珍稀图标3天或7天，获得对应期限的图标；购买多份图标，使用期限叠加。</p>
+                </li>
+                <li>
+                    <em class="ico cq">Q:</em>
+                    <p>为什么我领取的皮肤一直查看没有到账?</p>
+                </li>
+                <li class="pb15">
+                    <em class="ico">A:</em>
+                    <p>皮肤将在领取后的2小时内到账，也可以通过掌上英雄联盟查看皮肤到账情况。</p>
+                </li>
+                <li>
+                    <em class="ico cq">Q:</em>
+                    <p>为什么我领取的皮肤提示不可用?</p>
+                </li>
+                <li class="pb15">
+                    <em class="ico">A:</em>
+                    <p>这是一个显示错误，实际上已经领取成功，请在实际游戏对局中使用。</p>
+                </li>
+                <li>
+                    <em class="ico cq">Q:</em>
+                    <p>我领取了一个7天的期限皮肤，第二天因为某些原因被封号了30天。请问账号解封后，我的期限皮肤还能继续使用吗?</p>
+                </li>
+                <li class="pb15">
+                    <em class="ico">A:</em>
+                    <p>封号期间，期限道具的时长计算不会停止，所以30天封号期结束之后，之前获得的一个7天期限皮肤已经过期失效，不能继续使用。请各位召唤师注意言行，坚持正义。</p>
+                </li>
+			</ul>
+			</div>
+			<!--第七部分 e-->
+		</div>
+    </div>
+</div>
+
+<div class="float">
+	<ul class="floatul clearfix">
+		<li class="fl"><a href="#part1" onClick="pgvSendClick({hottag:'a20170913hax.index.float.pay'});">充值钻石</a></li>
+		<li class="fl"><a href="#part2" onClick="pgvSendClick({hottag:'a20170913hax.index.float.dh'});">兑换魔法引擎</a></li>
+		<li class="fl"><a href="#part3" onClick="pgvSendClick({hottag:'a20170913hax.index.float.line'});">幸运引擎充能</a></li>
+		<li class="fl"><a href="#part4" onClick="pgvSendClick({hottag:'a20170913hax.index.float.magic'});">打开魔法引擎</a></li>
+		<li class="fl"><a href="#part5" onClick="pgvSendClick({hottag:'a20170913hax.index.float.prize'});">领取奖励</a></li>
+		<li class="fl"><a href="#part6" onClick="pgvSendClick({hottag:'a20170913hax.index.float.rule'});">活动规则</a></li>
+		<li class="fl"><a href="#part7" onClick="pgvSendClick({hottag:'a20170913hax.index.float.faq'});">活动FAQ</a></li>
+		<li class="fl"><a href="//kf.qq.com/cgi-bin/SuperLOL" target="_blank" onClick="pgvSendClick({hottag:'a20170913hax.index.float.kefu'});">联系客服</a></li>
+	</ul>
+</div>
+
+<!-- 融合皮肤充能弹窗 s-->
+<div class="pop" id="pop" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="popleft">
+			<h3 class="poptit">打开魔法引擎<strong>积累充能</strong></h3>
+			<p>打开1个蓝色魔法引擎，<strong>获得<span class="yel">10点</span>能量</strong></p>
+			<div class="plinfo"><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/b_mac.jpg" width="92"><span class="yel">10能量点</span></div>
+			<p>打开1个紫色魔法引擎，<strong>获得<span class="yel">20点</span>能量</strong></p>
+			<div class="plinfo"><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/p_mac.jpg" width="92"><span class="yel">20能量点</span></div>
+		</div>
+		<div class="popright">
+			<h3 class="poptit">分解未领取皮肤获得充能</h3>
+			<p>每分解1个蓝色魔法引擎的道具，获得<span class="yel">2点</span>能量；每分解一个紫色魔法引擎的道具，获得<span class="yel">5点</span>能量</p>
+			<div class="splitbox clearfix">
+				<div class="additem bluebox">
+					<p>蓝色魔法引擎道具</p>
+					<input type="checkbox" name="allst1" class="allst1">全选
+					<ul class="itemlistul" id="SynDraw1List_res">
+						<!--li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li-->
+					</ul>
+				</div>
+				<div class="additem purplebox">
+					<p>紫色魔法引擎道具</p>
+					<input type="checkbox" name="allst2" class="allst2">全选
+					<ul class="itemlistul" id="SynDraw2List_res">
+						<!--li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li>
+						<li><input type="checkbox" name="split"><span>道具名道具名</span></li-->
+					</ul>
+				</div>
+			</div>
+			<a href="javascript:;" onClick="CheckSyn();" class="btn-split">分解</a>
+		</div>
+	</div>
+</div>
+<!-- 融合皮肤充能弹窗 e-->
+
+<!--领取确认 S-->
+<div id="sendItem" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示: <span>如果您想领取至别的大区，请点击</span><a href='javascript:;' id="sendChang">更换大区</a></h4>
+			<div class="bd">
+				<p class="normal-tips send-normal-tips" id="item_info"></p>
+				<p class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" id="sendBtn">确定</a>
+					<a class="btn-small-yel" href="javascript:;" id="CheckItem">检查是否拥有</a>
+				</p>
+				<p class="normal-tips" id="item_ext"></p>
+		   </div>
+		</div>
+	</div>
+</div>
+<!--领取确认 E-->
+
+<!--二次确认 S 1-->
+<div id="confirmDialog" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<p class="normal-tips send-normal-tips" id="msg_info"></p>
+				<p class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" id="confirmBtn">确定</a>
+					<a class="btn-small-yel" href="javascript:hidDialogs();" id="cancelItem">取消</a>
+				</p>
+		   </div>
+		</div>
+	</div>
+</div>
+<!--二次确认 E-->
+  
+  <!--二次确认 S2-->
+<div id="confirmDialog2" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<p class="normal-tips send-normal-tips" id="msg_info2"></p>
+				<p class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" id="confirmBtn2">确定</a>
+					<a class="btn-small-yel" href="javascript:hidDialogs();" id="cancelItem2">取消</a>
+				</p>
+		   </div>
+		</div>
+	</div>
+</div>
+<!--二次确认 E-->
+  
+  <!--二次确认 S3-->
+<div id="confirmDialog3" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<p class="normal-tips send-normal-tips" id="msg_info3"></p>
+				<p class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" id="confirmBtn3">确定</a>
+					<a class="btn-small-yel" href="javascript:hidDialogs();" id="cancelItem3">取消</a>
+				</p>
+		   </div>
+		</div>
+	</div>
+</div>
+<!--二次确认 E-->
+  
+  <!--二次确认 S4-->
+<div id="confirmDialog4" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<p class="normal-tips send-normal-tips" id="msg_info4"></p>
+				<p class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" id="confirmBtn4">确定</a>
+					<a class="btn-small-yel" href="javascript:hidDialogs();" id="cancelItem4">取消</a>
+				</p>
+		   </div>
+		</div>
+	</div>
+</div>
+<!--二次确认 E-->
+
+<!-- 抽奖结果 S-->
+<div id="skins" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>恭喜您获得</h4>
+			<div class="bd">
+				<div class="skins" id="get_awards_info"></div>
+			</div>
+			<a href="javascript:showCompleteDia();" class="btn-small-yel wh90" >确定</a>  
+		</div>
+	</div>
+</div>
+<!--抽奖结果1 E-->
+
+<!-- 温馨提示1 S-->
+<div id="sys" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<div id="sys_info"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--温馨提示1 E-->
+
+<!-- 炫彩礼包1 S-->
+<div id="skin_1" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<div class="bd">
+				<img src="http://game.gtimg.cn/images/lol/act/a20170913hax/xcbag1.jpg" class="xcbag">
+			</div>
+		</div>
+	</div>
+</div>
+<!--炫彩礼包1 E-->
+
+<!-- 炫彩礼包2 S-->
+<div id="skin_2" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<div class="bd">
+				<img src="http://game.gtimg.cn/images/lol/act/a20170913hax/xcbag2.jpg" class="xcbag">
+			</div>
+		</div>
+	</div>
+</div>
+<!--炫彩礼包2 E-->
+
+<!--温馨提示2 S-->
+<div id="succ" class="pops pop-txt" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con">
+			<h4>温馨提示</h4>
+			<div class="bd">
+				<span id="succ_info"></span>
+				<div class="btn-wrapper">
+					<a class="btn-small-blue" href="javascript:;" onClick="hidDialogs();">确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--温馨提示2 E-->
+
+<!-- 道具领取购买公用记录弹层 S -->
+<div class="pops pop-history" id="popupBox" style="display:none">
+	<div class="popwrap clearfix">
+		<a href="javascript:;" class="popclose" onClick="hidDialogs();">&times;</a>
+		<div class="pop-con tc">
+			<h3 class="pop-title" id="boxInfo"></h3>
+			<div class="pop-main">
+				<div class="pop-table-tit ovh"><span class="w210">购买时间</span><span class="w330">购买道具及数量</span><span class="w210">领取大区</span></div>
+				<div class="pop-table ovh" id="target_list"></div>
+				<div class="pagination" id="div_page_roller"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 道具领取购买公用记录弹层 E -->
+<textarea style="display:none" id="rTmp_jst">
+	<table>
+		{for p in data}
+			<tr>
+				<td width="210">${p.dtBuyTime} </td>
+        <td width="330">${p.vInfo}</td>
+        <td width="210">${p.Send}</td>
+      </tr>
+		{forelse}
+			<tr><td width="750">暂无信息</td></tr>
+		{/for}
+	</table>
+</textarea>
+<textarea style="display:none" id="rUserGet_jst">
+	<table>
+		{for p in list}
+			<tr>
+				<td width="210">${p.dtTime} </td>
+       	 		<td width="330">${p.vInfo}</td>
+        		<td width="210">${p.Send}</td>
+      		</tr>
+		{forelse}
+			<tr><td width="750">暂无信息</td></tr>
+		{/for}
+	</table>
+</textarea>
+<textarea style="display:none" id="itemlist_jst">
+	<a class="prev-btn" href="javascript:;" onClick="${FuncLast}" ${BtnLast}>上一页</a>
+	<a class="next-btn" href="javascript:;" onClick="${FuncNext}" ${BtnNext}>下一页</a>
+	<div class="scroll-pic-box">
+		<ul class="scroll-pic">
+			{for p in list}
+				{if p.iType == "0"}
+					<li id="${p.vSerialNo}">
+				{else}
+					<li class="pic-gray">
+				{/if}
+				<a href="javascript:;" onClick="${p.FuncGet}">
+					<span id="${p.vSerialNo}_img">
+						<i class="pic-item"><img src="${p.vImg}"></i>
+						{if p.iItemType == "1"}
+				    	<i class="gift-ico hero"></i>
+				    {elseif p.iItemType == "2"}
+				      <i class="gift-ico skin"></i>
+				    {/if}
+				    {if p.iIfLimit == "1"}
+				    	<em class="limit-skin"></em>
+					{elseif p.iIfLimit == "2"}
+						<em class="days" ${p.IsShow}>${p.vDuration}</em>
+					{/if}
+					</span>
+					<i class="sbg-cover" ${p.IsShow}></i>
+					{if p.iValue == "1"}
+						<i class="ts-cover"></i>
+					{/if}
+					<i class="gift-name" id="${p.vSerialNo}_txt" ${p.IsShow}>${p.vInfo}${p.vDuration}</i>
+					{if p.iType == "0"}
+						<span class="btn-get">${p.BtnGet}</span>
+					{elseif p.iType == "3"}
+						<em class="btn-spr gift-syned">已分解</em>
+					{elseif p.iType == "4"}
+						<em class="btn-spr gift-geted"></em>
+					{else}
+						<em class="btn-spr gift-geted">${p.iAreaStr}</em>
+					{/if}
+				</a>
+			</li>
+			{forelse}
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none.png"><em class="giftnone">暂无任何<br>奖励</em></li>
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+				<li><img src="http://game.gtimg.cn/images/lol/act/a20170913hax/none_bg.png"></li>
+			{/for}
+		</ul>
+	</div>
+</textarea>
+<textarea style="display:none" id="synlist_jst">
+	<div class="bd">
+  	<ul class="mix-info-list">
+  		{for p in list}
+  		<li id='syn_${p.vSerialNo}' rel='${p.vItemCode}'>
+  			<label>
+  			<input type="checkbox" name="split">
+  			<span>
+  				${p.vDuration}${p.vInfo}
+  			</span>
+  			</label>
+  		</li>
+  		{forelse}
+				<li class="no_syn_item"><span class='choose'></span><label for='1'>暂无道具</label></li>
+			{/for}
+  	</ul>
+  </div>
+  <div class="pagination">
+  	<a alt="上一页" class="uppage" href="javascript:;" onClick="${FuncLast}" ${BtnLast}>上一页</a><a alt="下一页" class="downpage" href="javascript:;" onClick="${FuncNext}" ${BtnNext}>下一页</a>
+  </div>
+</textarea>
+<script src="//ossweb-img.qq.com/images/js/jquery/jquery-1.8.0.min.js"></script>
+<script src="//ossweb-img.qq.com/images/lol/title/lol.js"></script>
+<script src="//ossweb-img.qq.com/images/js/foot.js"></script>
+<script src="//ossweb-img.qq.com/images/js/milo/milo.js"></script>
+<script src="http://lol.qq.com/act/a20170801tryndamere/js/skinprice.js"></script>
+<script src="http://ossweb-img.qq.com/images/lol/hns/RALFSHEN_HEROSKIN.js"></script>
+<script src="/comm-htdocs/js/game_area/lol_server_select.js"></script>
+<script src= "http://ossweb-img.qq.com/images/js/eas/eas.js" ></script>
+<script src="//pingjs.qq.com/ping_tcss_ied.js"></script>
+<!--主功能js   s-->
+<script src="js/index.js"></script>
+<script src="js/buyDia.js"></script>
+<!--主功能js   e-->
+<script>
+
+$(".allst1,.allst2").click(function() {  //道具分解全选功能
+	if($(this).hasClass("all")){
+		$(this).next().find("input").attr("checked",false); 
+		$(this).removeClass("all");
+	}else{
+		$(this).next().find("input").attr("checked","checked"); 
+		$(this).addClass("all");
+	}
+});
+
+var G_GETINFO = {};
+var G_PRIZENO=0;
+var lottery={
+    index:0,    //当前转动到哪个位置，起点位置
+    count:12,    //总共有多少个位置
+    timer:0,    //setTimeout的ID，用clearTimeout清除
+    speed:20,    //初始转动速度
+    times:0,    //转动次数
+    cycle:5,    //转动基本次数：即至少需要转动多少次再进入抽奖环节
+    prize:0,    //中奖位置
+    init:function(id,prize){
+        if ($("#"+id).find("li").length>0) {
+            $lottery = $("#"+id);
+            $units = $lottery.find("li");
+            this.obj = $lottery;
+            this.count = $units.length;
+            $lottery.find("li").eq(0).addClass("active");
+            lottery.prize=prize;
+        };
+    },
+    roll:function(){
+        var index = this.index;
+        var count = this.count;
+        var lottery = this.obj;
+        index += 1;
+        if (index>count-1) {
+            index = 0;
+        };
+		var sli=$(lottery).find("li");
+        $lottery.find("li").each(function(index){$lottery.find("li").removeClass("active");});
+		$lottery.find("li").eq(index).addClass("active");
+		//console.log("index",index);
+        this.index=index;
+        return false;
+    },
+    stop:function(index){
+        this.prize=index;
+        return false;
+    }
+};
+
+function roll(){
+    lottery.times += 1;
+    lottery.roll();//转动过程调用的是lottery的roll方法，这里是第一次调用初始化
+    if (lottery.times > lottery.cycle+10 && lottery.prize==lottery.index) {
+        clearTimeout(lottery.timer);
+        lottery.timer=0;
+        lottery.times=0;
+        lottery.speed=20;
+        G_CLICK=false;
+        setTimeout(function(){
+        	showDialogs('skins');
+        	//刷新用户信息
+			//sHtml = '<div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/'+G_GETINFO.iItemId+'.jpg" width="132" height="196"><p>'+RALFSHEN_LOLHeroAndSkin[G_GETINFO.iItemId]+'</p></div>'
+			//$("#draw_awards_list_"+vData['DrawType']+" li").eq(G_PRIZENO).html(sHtml);
+			//$("#draw_awards_list_"+vData['DrawType']+" li").eq(G_PRIZENO).addClass("pic-gray");
+        	if(G_MROUNDNUM==8){
+				CallFunction('UserInfo_UserZige','GetItemII','DrawType='+G_DRAWTYPE,'DrawCardActionIII');
+			}else{
+				CallFunction('UserInfo_UserZige','','','DrawCardActionIII');
+			}
+        	ShowUserItemTab(0,"Draw"+G_DRAWTYPE+"List");
+        	LotteryClickInfo(1);
+        },500);
+    }else{
+        if (lottery.times<lottery.cycle) {
+            lottery.speed -= 10;
+        }else if(lottery.times==lottery.cycle) {
+            var index = Math.random()*(lottery.count)|0;//中奖物品通过一个随机数生成  
+        }else{
+            if (lottery.times > lottery.cycle+10 && ((lottery.prize==0 && lottery.index==11))) {
+                lottery.speed += 110;
+            }else{
+                lottery.speed += 20;
+            }
+        }
+        if (lottery.speed<40) {
+            lottery.speed=40;
+        };
+        //console.log(lottery.times+'^^^^^^'+lottery.speed+'^^^^^^^'+lottery.prize);
+        lottery.timer = setTimeout(roll,lottery.speed);//循环调用
+    }
+    return false;
+}
+
+
+var G_CLICK=false;
+var G_DRAWTYPE=0;
+var G_MROUNDNUM=0;
+var G_NOTISHI = [,false,false];
+$("#btn-open1,#btn-open2").click(function(){
+	var rel=$(this).attr("rel");
+	G_DRAWTYPE = rel;
+	DoDraw(rel);
+});
+
+/**
+ * 消耗魔法引擎抽奖
+ * @param iSpType
+ */
+function DoDraw(drawType)
+{
+	need("biz.login",function(LoginManager){
+		LoginFunc = function(){
+			if(G_AREA == 0)
+			{
+				changeArea();//绑定大区
+				return;	
+			}
+			var drawZige = +$("#draw_zige_num_"+drawType).html();
+			if(drawZige<=0){
+				showSysInfo("魔法引擎不足");
+				return;
+			}
+			//不再二次提示
+			if(G_NOTISHI[drawType]){
+				showSysInfo("打开中，请稍后");
+				CallFunction('','DrawItemII','DrawType='+drawType+'&areaid='+G_AREA+'&rid=' + Math.random()+'&'+GetEarsParam(),'DrawCardActionIII');
+			}else{
+				$("#msg_info").html("确定要打开该魔法引擎吗？<label><input type=\"checkbox\" id=\"cbox_draw\">不再提示</label>");
+				//$("#confirmBtn").unbind("click").click(function(){
+					//if($('#cbox_draw').is(':checked')){
+						//G_NOTISHI[drawType] = true;
+					//}
+					//ExcDraw(drawType);
+				//});
+				$("#confirmBtn").attr("href","javascript:DrawConfirmFun("+drawType+");");
+				showDialogs('confirmDialog');
+			}
+		};
+		LoginManager.checkLogin(LoginFunc, UnloginFunc);
+	});
+}
+
+function DrawConfirmFun(drawType){
+	if($('#cbox_draw').is(':checked')){
+		G_NOTISHI[drawType] = true;
+	}
+	ExcDraw(drawType);
+}
+
+function ExcDraw(drawType){
+	showSysInfo("打开中，请稍后");
+	CallFunction('','DrawItemII','DrawType='+drawType+'&areaid='+G_AREA+'&rid=' + Math.random()+'&'+GetEarsParam(),'DrawCardActionIII');
+}
+
+function DrawItemII(vData){
+	var sHtml = "";
+	var qixianStr = "";
+	var iRet = parseInt(vData["iRet"],10);
+	var prizeNo = parseInt(vData["prizeNo"],10);
+	if(iRet == 0 &&　vData["list"][0])
+	{
+		var getInfo = vData["list"][0];
+		G_GETINFO = getInfo;
+		G_MROUNDNUM = +vData['iMRoundNum'];
+		G_DRAWTYPE = +vData['DrawType'];
+		if(+getInfo.iDuration>0){
+			sHtml += '<em></em>';
+			qixianStr = "("+getInfo.iDuration+"天)";
+		}else{
+			qixianStr = "";
+		}
+		sHtml = '<img src="http://ossweb-img.qq.com/images/lol/appskin/'+getInfo.iItemId+'.jpg"><p>'+RALFSHEN_LOLHeroAndSkin[getInfo.iItemId]+qixianStr+'</p>';
+		$("#get_awards_info").html(sHtml);
+		hidDialogs();
+		//判断中奖编号
+		if(prizeNo>=4 && prizeNo<=7){
+			prizeNo = prizeNo+2;
+		}else if(prizeNo==8 || prizeNo==9){
+			prizeNo = prizeNo-4;
+		}
+		G_PRIZENO = prizeNo;
+		if($('#cbox'+G_DRAWTYPE).is(':checked')) {  //判断当前抽奖模块是否跳过动画
+         pgvSendClick({hottag:'a20170913hax.index.cjbtn.unanimate'});
+			if (G_CLICK) {//click控制一次抽奖过程中不能重复点击抽奖按钮，后面的点击不响应
+				//return false;
+			}else{
+				setTimeout(function(){
+					showDialogs('skins');  //绿色抽奖结果
+					//刷新用户信息
+					//sHtml = '<div class="openshow"><img src="http://ossweb-img.qq.com/images/lol/appskin/'+G_GETINFO.iItemId+'.jpg" width="132" height="196"><p>'+RALFSHEN_LOLHeroAndSkin[G_GETINFO.iItemId]+'</p></div>'
+					//$("#draw_awards_list_"+vData['DrawType']+" li").eq(G_PRIZENO).html(sHtml);
+					//$("#draw_awards_list_"+vData['DrawType']+" li").eq(G_PRIZENO).addClass("pic-gray");
+					if(G_MROUNDNUM==8){
+						CallFunction('UserInfo_UserZige','GetItemII','DrawType='+G_DRAWTYPE,'DrawCardActionIII');
+					}else{
+						CallFunction('UserInfo_UserZige','','','DrawCardActionIII');
+					}
+					ShowUserItemTab(0,"Draw"+G_DRAWTYPE+"List");
+					LotteryClickInfo(1);
+		        },500);
+			}
+		}else{
+        pgvSendClick({hottag:'a20170913hax.index.cjbtn.animate'});
+			if(G_DRAWTYPE==1){
+				lottery.init('openbox1',prizeNo);
+			}else{
+				lottery.init('openbox2',prizeNo);
+			}
+			if (G_CLICK) {//click控制一次抽奖过程中不能重复点击抽奖按钮，后面的点击不响应
+				//return false;
+			}else{
+				lottery.speed=100;
+				roll();    //转圈过程不响应click事件，会将click置为false
+				G_CLICK=true; //一次抽奖完成后，设置click为true，可继续抽奖
+			}
+		}
+		
+	}
+	else{
+		showSysInfo(vData["sMsg"]);	
+	}
+}
+
+function showCompleteDia(){
+	if(G_MROUNDNUM==8){
+		showSysInfo("恭喜您，本轮8个魔法引擎普通皮肤奖励已经全部收集完毕，将为您轮换8个新的奖励。");
+	}else{
+		hidDialogs();
+	}
+}
+
+function showDialogs(e){
+	need("biz.dialog",function(Dialog){
+      Dialog.show({
+          id:e,
+          bgcolor:'#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
+          opacity:70      //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+      });
+  });
+}
+
+function hidDialogs(){
+	need("biz.dialog",function(Dialog){Dialog.hide();});return;
+}
+             
+$(".openqus").on("mouseover",function(){$(this).next().show()});
+$(".openqus").on("mouseout",function(){$(this).next().hide()});
+
+now = new Date(),hour = now.getHours();
+if(hour <= 6){pgvSendClick({hottag:'a20170913hax.index.usertime.6'});}
+else if (hour >= 7 && hour <= 10){pgvSendClick({hottag:'a20170913hax.index.usertime.10'});}
+else if (hour >= 11 && hour <= 14){pgvSendClick({hottag:'a20170913hax.index.usertime.14'});} 
+else if (hour >= 15 && hour <= 19){pgvSendClick({hottag:'a20170913hax.index.usertime.19'});}
+else if (hour >= 20 && hour <= 22){pgvSendClick({hottag:'a20170913hax.index.usertime.22'});}
+else if (hour >= 23 && hour <= 24){pgvSendClick({hottag:'a20170913hax.index.usertime.24'});} 
+</script>
+<script>if(typeof(pgvMain) == 'function')pgvMain();</script>
+</body>
+</html>
